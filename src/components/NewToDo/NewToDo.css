@@ -1,0 +1,38 @@
+.new-ToDo {
+    background-color: #64626b;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .new-ToDo button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #061549;
+    background-color: #00055d;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+  }
+  
+  .new-ToDo button:hover,
+  .new-ToDo button:active {
+    background-color: #062368;
+    border-color: #062a62;
+  }
+  
+  .new-ToDo button.alternative {
+    color: #220131;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  
+  .new-ToDo button.alternative:hover,
+  .new-ToDo button.alternative:active {
+    background-color: #04173e;
+  }
