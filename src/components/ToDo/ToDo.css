@@ -5,3 +5,8 @@
   width: 50rem;
   max-width: 95%;
 }
+
+.complete-tag {
+  display: flex;
+  align-items: flex-start;
+}

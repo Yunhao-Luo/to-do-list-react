@@ -5,6 +5,7 @@ const ToDoForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredPriority, setEnteredPriority] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [enteredTime, setEnteredTime] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -18,12 +19,23 @@ const ToDoForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
+  const timeChangeHandler = (event) => {
+    setEnteredTime(event.target.value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
+    let dateAndTime = enteredDate + 'T' + enteredTime;
+    if (dateAndTime === 'T') {
+      dateAndTime = new Date();
+    }
+    else {
+      dateAndTime = new Date(dateAndTime);
+    }
     const ToDoData = {
       title: enteredTitle,
-      dueTime: new Date(enteredDate),
-      priority: "low",
+      dueTime: dateAndTime,
+      priority: enteredPriority,
       complete: false
     };
     
@@ -58,8 +70,15 @@ const ToDoForm = (props) => {
             type="date"
             value={enteredDate}
             min="2019-01-01"
-            max="2022-12-31"
             onChange={dateChangeHandler}
+          />
+        </div>
+        <div className="new-ToDo__control">
+          <label>Due Time</label>
+          <input
+            type="time"
+            value={enteredTime}
+            onChange={timeChangeHandler}
           />
         </div>
       </div>

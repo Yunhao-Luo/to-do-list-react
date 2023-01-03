@@ -10,7 +10,7 @@ const Items = (props) => {
   return (
     <ul className="todo-list">
       {props.items.map((todo) => (
-        <Item obj={todo} onComplete={onComplete}/>
+        <Item obj={todo} key={todo.id} onComplete={onComplete}/>
       ))}
     </ul>
   );

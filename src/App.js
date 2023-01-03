@@ -7,21 +7,21 @@ import NewToDo from './components/NewToDo/NewToDo';
 function App() {
   const DUMMY_TO_DOS = [
     {
-      id: "1",
+      id: "e1",
       title: "Do laundry",
       dueTime: new Date(2022, 10, 3, 16, 0),
       priority: "low",
       complete: false
     },
     {
-      id: "2",
+      id: "e2",
       title: "Do homework",
       dueTime: new Date(2022, 10, 5, 12, 0),
       priority: "high",
       complete: false
     },
     {
-      id: "3",
+      id: "e3",
       title: "Dinner with Tony",
       dueTime: new Date(2022, 10, 3, 18, 0),
       priority: "medium",
@@ -30,7 +30,7 @@ function App() {
   ];
 
   const DUMMY_COMPLETED = [{
-      id: "4",
+      id: "e4",
       title: "Grocery shopping",
       dueTime: new Date(2022, 8, 3, 10, 0),
       priority: "medium",
@@ -59,11 +59,24 @@ function App() {
     });
   }
 
+  const undoComplete = (item) => {
+    setToDos(prevToDos => {
+      return [item, ...prevToDos];
+    });
+    setCompletedToDos(prevToDos => {
+      return prevToDos.filter(
+        (todo) => {
+          return todo !== item;
+        }
+      );
+    });
+  }
+
   return (
     <div className="App">
       <h2>To Do List</h2>
       <NewToDo onAddToDo={onAddToDo}></NewToDo>
-      <ToDo items={ToDos} completed={CompletedTodDos} onComplete={onComplete}></ToDo>
+      <ToDo items={ToDos} completed={CompletedTodDos} onComplete={onComplete} undoComplete={undoComplete}></ToDo>
     </div>
   );
 }

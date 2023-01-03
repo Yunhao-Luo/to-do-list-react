@@ -1,54 +1,91 @@
 .todo-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-    margin: 1rem 0;
-    background-color: #4b4b4b;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: #4b4b4b;
+  border-radius: 12px;
+}
+
+.todo-item__description__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: flex-start;
+}
+
+.todo-item__description {
+  display: flex;
+  flex-flow: column wrap;
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.todo-item__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.todo-item__due {
+  font-size: 1rem;
+  color: white;
+}
+
+.todo-item__priority {
+  font-size: 1rem;
+  color: white;
+}
+
+.todo-item h2 {
+  color: #3a3a3a;
+  font-size: 1rem;
+  flex: 1;
+  margin: 0 1rem;
+  color: white;
+}
+
+.todo-item__incomplete {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.212);
+  background-color: #f4f7f8;
+  border: 3px solid rgba(60, 48, 48, 0.242);
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+.todo-item__complete {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.212);
+  background-color: #206ca2;
+  border: 3px solid rgba(60, 48, 48, 0.242);
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+@media (min-width: 580px) {
   .todo-item__description {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-end;
-    flex-flow: column-reverse;
+    flex-direction: row;
+    align-items: center;
     justify-content: flex-start;
     flex: 1;
   }
-  
-  .todo-item h2 {
-    color: #3a3a3a;
-    font-size: 1rem;
-    flex: 1;
-    margin: 0 1rem;
-    color: white;
+
+  .todo-item__description h2 {
+    font-size: 1.25rem;
   }
-  
-  .todo-item__complete {
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #052338;
-    border: 1px solid white;
-    padding: 0.5rem;
-    border-radius: 12px;
+
+  .todo-item__price {
+    font-size: 1.25rem;
+    padding: 0.5rem 1.5rem;
   }
-  
-  @media (min-width: 580px) {
-    .todo-item__description {
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 1;
-    }
-  
-    .todo-item__description h2 {
-      font-size: 1.25rem;
-    }
-  
-    .todo-item__price {
-      font-size: 1.25rem;
-      padding: 0.5rem 1.5rem;
-    }
-  }
+}
