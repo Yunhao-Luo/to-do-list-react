@@ -11,21 +11,24 @@ function App() {
       title: "Do laundry",
       dueTime: new Date(2022, 10, 3, 16, 0),
       priority: "low",
-      complete: false
+      complete: false,
+      tag: "Personal"
     },
     {
       id: "e2",
       title: "Do homework",
       dueTime: new Date(2022, 10, 5, 12, 0),
       priority: "high",
-      complete: false
+      complete: false,
+      tag: "Work"
     },
     {
       id: "e3",
       title: "Dinner with Tony",
       dueTime: new Date(2022, 10, 3, 18, 0),
       priority: "medium",
-      complete: false
+      complete: false,
+      tag: "Family"
     },
   ];
 
@@ -34,7 +37,8 @@ function App() {
       title: "Grocery shopping",
       dueTime: new Date(2022, 8, 3, 10, 0),
       priority: "medium",
-      complete: true
+      complete: true,
+      tag: "Personal"
   }]
 
   const [ToDos, setToDos] = useState(DUMMY_TO_DOS);

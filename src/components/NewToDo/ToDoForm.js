@@ -6,6 +6,7 @@ const ToDoForm = (props) => {
   const [enteredPriority, setEnteredPriority] = useState("Low");
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredTime, setEnteredTime] = useState("");
+  const [enteredTag, setEnteredTag] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -23,6 +24,10 @@ const ToDoForm = (props) => {
     setEnteredTime(event.target.value);
   };
 
+  const tagChangeHandler = (event) => {
+    setEnteredTag(event.target.value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
     let dateAndTime = enteredDate + "T" + enteredTime;
@@ -36,6 +41,7 @@ const ToDoForm = (props) => {
       dueTime: dateAndTime,
       priority: enteredPriority,
       complete: false,
+      tag: enteredTag
     };
 
     props.onSaveToDoData(ToDoData);
@@ -58,9 +64,9 @@ const ToDoForm = (props) => {
         <div className="new-ToDo__control">
           <label>Priority</label>
           <select value={props.selected} onChange={priorityChangeHandler}>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
           </select>
         </div>
         <div className="new-ToDo__control">
@@ -75,6 +81,14 @@ const ToDoForm = (props) => {
         <div className="new-ToDo__control">
           <label>Due Time</label>
           <input type="time" value={enteredTime} onChange={timeChangeHandler} />
+        </div>
+        <div className="new-ToDo__control">
+          <label>Tag</label>
+          <select value={props.selected} onChange={tagChangeHandler}>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Family">Family</option>
+          </select>
         </div>
       </div>
       <div className="new-ToDo__actions">

@@ -1,5 +1,10 @@
 import Card from "../UI/Card";
 import "./Items.css";
+import {
+  MdWork,
+  MdOutlineFamilyRestroom,
+  MdOutlinePersonalInjury,
+} from "react-icons/md";
 
 const Item = (props) => {
   const onComplete = () => {
@@ -17,11 +22,35 @@ const Item = (props) => {
   return (
     <Card className="todo-item">
       <div className="todo-item__description">
-      <div className="todo-item__description__container">
-        <div className="todo-item__title">{props.obj.title}</div>
-        <div className="todo-item__due">{props.obj.dueTime.toLocaleString()}</div>
-        <div className="todo-item__priority">Priority: {props.obj.priority}</div>
-      </div>
+        <div className="todo-item__description__container">
+          <div className="todo-item__firstline__container">
+            <div className="todo-item__title">{props.obj.title}</div>
+            <div className="todo-item__tag__container">
+              <div className="todo-item__tag">{props.obj.tag}</div>
+              {props.obj.tag === "Work" && <MdWork />}
+              {props.obj.tag === "Family" && <MdOutlineFamilyRestroom />}
+              {props.obj.tag === "Personal" && <MdOutlinePersonalInjury />}
+            </div>
+          </div>
+          <div className="todo-item__due">
+            {props.obj.dueTime.toLocaleString()}
+          </div>
+          {props.obj.priority === "low" && (
+            <div className="todo-item__priority__low">
+              Priority: {props.obj.priority}
+            </div>
+          )}
+          {props.obj.priority === "medium" && (
+            <div className="todo-item__priority__medium">
+              Priority: {props.obj.priority}
+            </div>
+          )}
+          {props.obj.priority === "high" && (
+            <div className="todo-item__priority__high">
+              Priority: {props.obj.priority}
+            </div>
+          )}
+        </div>
       </div>
       {!props.obj.complete && (
         <button className="todo-item__incomplete" onClick={onComplete}></button>
