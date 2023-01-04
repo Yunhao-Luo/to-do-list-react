@@ -3,7 +3,7 @@ import "./ToDoForm.css";
 
 const ToDoForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredPriority, setEnteredPriority] = useState("");
+  const [enteredPriority, setEnteredPriority] = useState("Low");
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredTime, setEnteredTime] = useState("");
 
@@ -25,20 +25,19 @@ const ToDoForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    let dateAndTime = enteredDate + 'T' + enteredTime;
-    if (dateAndTime === 'T') {
+    let dateAndTime = enteredDate + "T" + enteredTime;
+    if (dateAndTime === "T") {
       dateAndTime = new Date();
-    }
-    else {
+    } else {
       dateAndTime = new Date(dateAndTime);
     }
     const ToDoData = {
       title: enteredTitle,
       dueTime: dateAndTime,
       priority: enteredPriority,
-      complete: false
+      complete: false,
     };
-    
+
     props.onSaveToDoData(ToDoData);
     setEnteredTitle("");
     setEnteredPriority("");
@@ -58,11 +57,11 @@ const ToDoForm = (props) => {
         </div>
         <div className="new-ToDo__control">
           <label>Priority</label>
-          <input
-            type="text"
-            value={enteredPriority}
-            onChange={priorityChangeHandler}
-          />
+          <select value={props.selected} onChange={priorityChangeHandler}>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
         </div>
         <div className="new-ToDo__control">
           <label>Due Date</label>
@@ -75,15 +74,13 @@ const ToDoForm = (props) => {
         </div>
         <div className="new-ToDo__control">
           <label>Due Time</label>
-          <input
-            type="time"
-            value={enteredTime}
-            onChange={timeChangeHandler}
-          />
+          <input type="time" value={enteredTime} onChange={timeChangeHandler} />
         </div>
       </div>
       <div className="new-ToDo__actions">
-        <button type="button" onClick={props.onCancel}>Cancel</button>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add ToDo</button>
       </div>
     </form>
