@@ -46,10 +46,14 @@ function App() {
   ];
 
   const [ToDos, setToDos] = useState(DUMMY_TO_DOS);
+  const [FilteredToDos, setFilteredToDos] = useState(ToDos);
   const [CompletedTodDos, setCompletedToDos] = useState(DUMMY_COMPLETED);
 
   const onAddToDo = (ToDo) => {
     setToDos((prevToDos) => {
+      return [ToDo, ...prevToDos];
+    });
+    setFilteredToDos((prevToDos) => {
       return [ToDo, ...prevToDos];
     });
   };
@@ -63,15 +67,45 @@ function App() {
         return todo !== item;
       });
     });
+    setFilteredToDos((prevToDos) => {
+      return prevToDos.filter((todo) => {
+        return todo !== item;
+      });
+    });
   };
 
   const undoComplete = (item) => {
     setToDos((prevToDos) => {
       return [item, ...prevToDos];
     });
+    setFilteredToDos((prevToDos) => {
+      return [item, ...prevToDos];
+    });
     setCompletedToDos((prevToDos) => {
       return prevToDos.filter((todo) => {
         return todo !== item;
+      });
+    });
+  };
+
+  const onAll = () => {
+    setFilteredToDos(ToDos);
+  };
+
+  const onToday = () => {
+    setFilteredToDos((prevToDos) => {
+      return prevToDos.filter((todo) => {
+        const today = new Date().getDay();
+        return todo.dueTime.getDay() === today;
+      });
+    });
+  };
+
+  const onMonth = () => {
+    setFilteredToDos((prevToDos) => {
+      return prevToDos.filter((todo) => {
+        const today = new Date().getMonth();
+        return todo.dueTime.getMonth() === today;
       });
     });
   };
@@ -82,13 +116,13 @@ function App() {
       <div>
         <div className="main-container">
           <Card className="left-bar">
-            <SideBar />
+            <SideBar onAll={onAll} onToday={onToday} onMonth={onMonth}/>
           </Card>
           <Card className="todos">
             <div className="content__container">
               <NewToDo onAddToDo={onAddToDo}></NewToDo>
               <ToDo
-                items={ToDos}
+                items={FilteredToDos}
                 completed={CompletedTodDos}
                 onComplete={onComplete}
                 undoComplete={undoComplete}

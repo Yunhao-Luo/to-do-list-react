@@ -1,16 +1,29 @@
 import "./SideBar.css";
 
-const SideBar = () => {
+const SideBar = (props) => {
+
+  const allController = () => {
+    props.onAll();
+  };
+
+  const todayController = () => {
+    props.onToday();
+  };
+
+  const monthController = () => {
+    props.onMonth();
+  };
+
   return (
     <div>
-      <button className="button">
-        <div>Items1</div>
+      <button className="button" onClick={allController}>
+        <div>Show All</div>
       </button>
-      <button className="button">
-        <div>Items2</div>
+      <button className="button" onClick={todayController}>
+        <div>Today</div>
       </button>
-      <button className="button">
-        <div>Items3</div>
+      <button className="button" onClick={monthController}>
+        <div>This Month</div>
       </button>
     </div>
   );

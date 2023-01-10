@@ -36,10 +36,14 @@ const ToDoForm = (props) => {
     } else {
       dateAndTime = new Date(dateAndTime);
     }
+    let Title = enteredTitle;
+    let Priority = enteredPriority;
+    if (Title === "") {Title = "Unnamed";}
+    if (Priority==="") {Priority = "low";}
     const ToDoData = {
-      title: enteredTitle,
+      title: Title,
       dueTime: dateAndTime,
-      priority: enteredPriority,
+      priority: Priority,
       complete: false,
       tag: enteredTag
     };
