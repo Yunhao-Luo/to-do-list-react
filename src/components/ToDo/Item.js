@@ -2,9 +2,10 @@ import Card from "../UI/Card";
 import "./Items.css";
 import {
   MdWork,
-  MdOutlineFamilyRestroom,
-  MdOutlinePersonalInjury,
+  MdOutlineFamilyRestroom
 } from "react-icons/md";
+
+import {BsFillPersonFill} from "react-icons/bs"
 
 const Item = (props) => {
   const onComplete = () => {
@@ -29,7 +30,7 @@ const Item = (props) => {
               <div className="todo-item__tag">{props.obj.tag}</div>
               {props.obj.tag === "Work" && <MdWork />}
               {props.obj.tag === "Family" && <MdOutlineFamilyRestroom />}
-              {props.obj.tag === "Personal" && <MdOutlinePersonalInjury />}
+              {props.obj.tag === "Personal" && <BsFillPersonFill />}
             </div>
           </div>
           <div className="todo-item__due">

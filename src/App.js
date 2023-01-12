@@ -110,13 +110,47 @@ function App() {
     });
   };
 
+  const onPersonal = () => {
+    setFilteredToDos(ToDos);
+    setFilteredToDos((prevToDos) => {
+      return prevToDos.filter((todo) => {
+        return todo.tag === "Personal";
+      });
+    });
+  };
+
+  const onWork = () => {
+    setFilteredToDos(ToDos);
+    setFilteredToDos((prevToDos) => {
+      return prevToDos.filter((todo) => {
+        return todo.tag === "Work";
+      });
+    });
+  };
+
+  const onFamily = () => {
+    setFilteredToDos(ToDos);
+    setFilteredToDos((prevToDos) => {
+      return prevToDos.filter((todo) => {
+        return todo.tag === "Family";
+      });
+    });
+  };
+
   return (
     <div className="App">
-      <h2 style={ {color:"white"} }>To Do List</h2>
+      <h2 style={{ color: "white" }}>To Do List</h2>
       <div>
         <div className="main-container">
           <Card className="left-bar">
-            <SideBar onAll={onAll} onToday={onToday} onMonth={onMonth}/>
+            <SideBar
+              onAll={onAll}
+              onToday={onToday}
+              onMonth={onMonth}
+              onPersonal={onPersonal}
+              onWork={onWork}
+              onFamily={onFamily}
+            />
           </Card>
           <Card className="todos">
             <div className="content__container">

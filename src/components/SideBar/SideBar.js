@@ -1,4 +1,10 @@
 import "./SideBar.css";
+import {
+  MdWork,
+  MdOutlineFamilyRestroom,
+} from "react-icons/md";
+
+import {BsFillPersonFill} from "react-icons/bs"
 
 const SideBar = (props) => {
 
@@ -14,6 +20,16 @@ const SideBar = (props) => {
     props.onMonth();
   };
 
+  const personalController = () => {
+    props.onPersonal();
+  };
+  const workController = () => {
+    props.onWork();
+  };
+  const familyController = () => {
+    props.onFamily();
+  };
+
   return (
     <div>
       <button className="button" onClick={allController}>
@@ -24,6 +40,15 @@ const SideBar = (props) => {
       </button>
       <button className="button" onClick={monthController}>
         <div>This Month</div>
+      </button>
+      <button className="button" onClick={personalController}>
+        <div>{ <BsFillPersonFill /> } Personal</div>
+      </button>
+      <button className="button" onClick={workController}>
+        <div>{ <MdWork /> } Work</div>
+      </button>
+      <button className="button" onClick={familyController}>
+        <div>{ <MdOutlineFamilyRestroom />} Family</div>
       </button>
     </div>
   );
