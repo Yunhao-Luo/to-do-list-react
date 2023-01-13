@@ -46,14 +46,10 @@ function App() {
   ];
 
   const [ToDos, setToDos] = useState(DUMMY_TO_DOS);
-  const [FilteredToDos, setFilteredToDos] = useState(ToDos);
   const [CompletedTodDos, setCompletedToDos] = useState(DUMMY_COMPLETED);
 
   const onAddToDo = (ToDo) => {
     setToDos((prevToDos) => {
-      return [ToDo, ...prevToDos];
-    });
-    setFilteredToDos((prevToDos) => {
       return [ToDo, ...prevToDos];
     });
   };
@@ -67,18 +63,10 @@ function App() {
         return todo !== item;
       });
     });
-    setFilteredToDos((prevToDos) => {
-      return prevToDos.filter((todo) => {
-        return todo !== item;
-      });
-    });
   };
 
   const undoComplete = (item) => {
     setToDos((prevToDos) => {
-      return [item, ...prevToDos];
-    });
-    setFilteredToDos((prevToDos) => {
       return [item, ...prevToDos];
     });
     setCompletedToDos((prevToDos) => {
@@ -88,75 +76,23 @@ function App() {
     });
   };
 
-  const onAll = () => {
-    setFilteredToDos(ToDos);
-  };
-
-  const onToday = () => {
-    setFilteredToDos((prevToDos) => {
-      return prevToDos.filter((todo) => {
-        const today = new Date().getDay();
-        return todo.dueTime.getDay() === today;
-      });
-    });
-  };
-
-  const onMonth = () => {
-    setFilteredToDos((prevToDos) => {
-      return prevToDos.filter((todo) => {
-        const today = new Date().getMonth();
-        return todo.dueTime.getMonth() === today;
-      });
-    });
-  };
-
-  const onPersonal = () => {
-    setFilteredToDos(ToDos);
-    setFilteredToDos((prevToDos) => {
-      return prevToDos.filter((todo) => {
-        return todo.tag === "Personal";
-      });
-    });
-  };
-
-  const onWork = () => {
-    setFilteredToDos(ToDos);
-    setFilteredToDos((prevToDos) => {
-      return prevToDos.filter((todo) => {
-        return todo.tag === "Work";
-      });
-    });
-  };
-
-  const onFamily = () => {
-    setFilteredToDos(ToDos);
-    setFilteredToDos((prevToDos) => {
-      return prevToDos.filter((todo) => {
-        return todo.tag === "Family";
-      });
-    });
-  };
-
   return (
     <div className="App">
-      <h2 style={{ color: "white" }}>To Do List</h2>
+      <header className="header">
+        <h1>To Do List</h1>
+      </header>
       <div>
         <div className="main-container">
-          <Card className="left-bar">
-            <SideBar
-              onAll={onAll}
-              onToday={onToday}
-              onMonth={onMonth}
-              onPersonal={onPersonal}
-              onWork={onWork}
-              onFamily={onFamily}
-            />
-          </Card>
+          <div className="left-bar">
+            <Card>
+              <SideBar />
+            </Card>
+          </div>
           <Card className="todos">
             <div className="content__container">
               <NewToDo onAddToDo={onAddToDo}></NewToDo>
               <ToDo
-                items={FilteredToDos}
+                items={ToDos}
                 completed={CompletedTodDos}
                 onComplete={onComplete}
                 undoComplete={undoComplete}
@@ -165,6 +101,9 @@ function App() {
           </Card>
         </div>
       </div>
+      <footer className="footer">
+        <h5>Footer</h5>
+      </footer>
     </div>
   );
 }
