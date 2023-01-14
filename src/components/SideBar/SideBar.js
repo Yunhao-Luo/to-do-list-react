@@ -1,12 +1,14 @@
+import React, { useState } from "react";
 import "./SideBar.css";
-import {
-  MdWork,
-  MdOutlineFamilyRestroom,
-} from "react-icons/md";
+import Time from "./Time";
+import Tag from "./Tag";
 
-import {BsFillPersonFill} from "react-icons/bs"
+import {IoIosArrowForward, IoIosArrowDown} from "react-icons/io"
 
 const SideBar = (props) => {
+
+  const [timeOn, setTimeOn] = useState(true);
+  const [tagOn, setTagOn] = useState(true);
 
   const allController = () => {
     props.onAll();
@@ -29,27 +31,21 @@ const SideBar = (props) => {
   const familyController = () => {
     props.onFamily();
   };
+  const collapseTime = () =>{
+    setTimeOn(!timeOn);
+  }
+  const collapseTag = () => {
+    setTagOn(!tagOn);
+  }
 
   return (
     <div>
-      <button className="button" onClick={allController}>
-        <div>Show All</div>
-      </button>
-      <button className="button" onClick={todayController}>
-        <div>Today</div>
-      </button>
-      <button className="button" onClick={monthController}>
-        <div>This Month</div>
-      </button>
-      <button className="button" onClick={personalController}>
-        <div>{ <BsFillPersonFill /> } Personal</div>
-      </button>
-      <button className="button" onClick={workController}>
-        <div>{ <MdWork /> } Work</div>
-      </button>
-      <button className="button" onClick={familyController}>
-        <div>{ <MdOutlineFamilyRestroom />} Family</div>
-      </button>
+      {timeOn === false && <button className="button__arrow" onClick={collapseTime}>{<IoIosArrowForward />}</button>}
+      {timeOn === true && <button className="button__arrow" onClick={collapseTime}>{<IoIosArrowDown />}</button>}
+      {timeOn === true && <Time onAll={allController} onMonth={monthController} onToday={todayController}/>}
+      {tagOn === false && <button className="button__arrow" onClick={collapseTag}>{<IoIosArrowForward />}</button>}
+      {tagOn === true && <button className="button__arrow" onClick={collapseTag}>{<IoIosArrowDown />}</button>}
+      {tagOn === true && <Tag onPersonal={personalController} onWork={workController} onFamily={familyController}/>}
     </div>
   );
 };
