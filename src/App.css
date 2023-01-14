@@ -52,6 +52,14 @@
   color: white;
 }
 
+.header {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  color: white;
+  background-color: rgb(35, 36, 41);
+}
+
 .App-link {
   color: #61dafb;
 }

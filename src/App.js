@@ -139,7 +139,9 @@ function App() {
 
   return (
     <div className="App">
-      <h2 style={{ color: "white" }}>To Do List</h2>
+      <header className="header">
+        <h1>To Do List</h1>
+      </header>
       <div>
         <div className="main-container">
           <Card className="left-bar">
@@ -165,6 +167,8 @@ function App() {
           </Card>
         </div>
       </div>
+      <footer className="footer">
+      </footer>
     </div>
   );
 }
