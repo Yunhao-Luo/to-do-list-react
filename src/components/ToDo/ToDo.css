@@ -1,11 +1,3 @@
-.todos {
-  padding: 1rem;
-  background-color: rgb(4, 18, 33);
-  margin: 2rem auto;
-  width: 60rem;
-  max-width: 95%;
-}
-
 .complete-tag {
   display: flex;
   align-items: flex-start;

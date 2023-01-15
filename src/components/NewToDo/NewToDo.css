@@ -1,33 +1,65 @@
+.new-ToDo__collapsed {
+  background-color: #000000;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
 .new-ToDo {
-    background-color: #64626b;
-    padding: 1rem;
-    border-radius: 12px;
-  }
-  
-  .new-ToDo button {
-    font: inherit;
-    cursor: pointer;
-    padding: 1rem 2rem;
-    border: 1px solid #061549;
-    background-color: #00055d;
-    color: white;
-    border-radius: 12px;
-    margin-right: 1rem;
-  }
-  
-  .new-ToDo button:hover,
-  .new-ToDo button:active {
-    background-color: #062368;
-    border-color: #062a62;
-  }
-  
-  .new-ToDo button.alternative {
-    color: #220131;
-    border-color: transparent;
-    background-color: transparent;
-  }
-  
-  .new-ToDo button.alternative:hover,
-  .new-ToDo button.alternative:active {
-    background-color: #04173e;
-  }
+  background-color: #565656;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 58rem;
+}
+
+.new-ToDo button {
+  font: inherit;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border: 1px solid #0e3d70;
+  background-color: #0e3d70;
+  color: white;
+  border-radius: 12px;
+  margin-right: 1rem;
+}
+
+.new-ToDo button:hover,
+.new-ToDo button:active {
+  background-color: #376597;
+  border-color: #376597;
+}
+
+.new-ToDo button.alternative {
+  color: #220131;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.new-ToDo button.alternative:hover,
+.new-ToDo button.alternative:active {
+  background-color: #04173e;
+}
+
+.new-ToDo__collapsed button {
+  border: 1px solid #0e3d70;
+  background-color: #0e3d70;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.new-ToDo__collapsed button:hover,
+.new-ToDo__collapsed button:active {
+  background-color: #376597;
+  border-color: #376597;
+}
+
+.new-ToDo__collapsed button.alternative {
+  color: #220131;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.new-ToDo__collapsed button.alternative:hover,
+.new-ToDo__collapsed button.alternative:active {
+  background-color: #04173e;
+}

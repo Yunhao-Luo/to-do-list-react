@@ -12,7 +12,7 @@ const Time = (props) => {
   };
 
   return (
-    <div>
+    <div className="sideMenu">
       <button className="button" onClick={allController}>
         <div>Show All</div>
       </button>

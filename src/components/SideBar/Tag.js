@@ -13,7 +13,7 @@ const Tag = (props) => {
   };
 
   return (
-    <div>
+    <div className="sideMenu">
       <button className="button" onClick={personalController}>
         <div>{<BsFillPersonFill />} Personal</div>
       </button>
