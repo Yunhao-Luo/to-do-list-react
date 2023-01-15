@@ -4,7 +4,7 @@ import {
   MdOutlineFamilyRestroom,
 } from "react-icons/md";
 
-import {BsFillPersonFill} from "react-icons/bs"
+import { BsFillPersonFill } from "react-icons/bs"
 
 const SideBar = (props) => {
 
@@ -31,7 +31,7 @@ const SideBar = (props) => {
   };
 
   return (
-    <div>
+    <div className="sideMenu">
       <button className="button" onClick={allController}>
         <div>Show All</div>
       </button>
@@ -42,13 +42,13 @@ const SideBar = (props) => {
         <div>This Month</div>
       </button>
       <button className="button" onClick={personalController}>
-        <div>{ <BsFillPersonFill /> } Personal</div>
+        <div>{<BsFillPersonFill />} Personal</div>
       </button>
       <button className="button" onClick={workController}>
-        <div>{ <MdWork /> } Work</div>
+        <div>{<MdWork />} Work</div>
       </button>
       <button className="button" onClick={familyController}>
-        <div>{ <MdOutlineFamilyRestroom />} Family</div>
+        <div>{<MdOutlineFamilyRestroom />} Family</div>
       </button>
     </div>
   );
