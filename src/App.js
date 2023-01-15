@@ -101,8 +101,12 @@ function App() {
           </Card>
         </div>
       </div>
+
+
+
+
       <footer className="footer">
-        <h5>Footer</h5>
+        <h1>Footer</h1>
       </footer>
     </div>
   );
