@@ -3,7 +3,7 @@ import "./ToDoForm.css";
 
 const ToDoForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredPriority, setEnteredPriority] = useState("Low");
+  const [enteredPriority, setEnteredPriority] = useState("low");
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredTime, setEnteredTime] = useState("");
   const [enteredTag, setEnteredTag] = useState("");
@@ -33,12 +33,21 @@ const ToDoForm = (props) => {
     let dateAndTime = enteredDate + "T" + enteredTime;
     if (dateAndTime === "T") {
       dateAndTime = new Date();
-    } else {
-      dateAndTime = new Date(dateAndTime);
+    } 
+    if (enteredDate !== "") {
+      const temp1 = new Date(enteredDate);
+      dateAndTime = temp1;
+    }
+    if (enteredTime !== "") {
+      const temp2 = new Date();
+      temp2.setHours(enteredTime.substring(0,2));
+      temp2.setMinutes(enteredTime.substring(3));
+      temp2.setSeconds(0);
+      dateAndTime = temp2;
     }
     let Title = enteredTitle;
     let Priority = enteredPriority;
-    if (Title === "") {Title = "Unnamed";}
+    if (Title === "") {Title = "Untitled";}
     if (Priority==="") {Priority = "low";}
     const ToDoData = {
       title: Title,
