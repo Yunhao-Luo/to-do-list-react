@@ -33,11 +33,18 @@ const ToDoForm = (props) => {
     let dateAndTime = enteredDate + "T" + enteredTime;
     if (dateAndTime === "T") {
       dateAndTime = new Date();
-      console.log("here");
-    } else {
-      dateAndTime = new Date();
+    } 
+    if (enteredDate !== "") {
+      const temp1 = new Date(enteredDate);
+      dateAndTime = temp1;
     }
-    console.log(dateAndTime);
+    if (enteredTime !== "") {
+      const temp2 = new Date();
+      temp2.setHours(enteredTime.substring(0,2));
+      temp2.setMinutes(enteredTime.substring(3));
+      temp2.setSeconds(0);
+      dateAndTime = temp2;
+    }
     let Title = enteredTitle;
     let Priority = enteredPriority;
     if (Title === "") {Title = "Untitled";}
@@ -49,8 +56,6 @@ const ToDoForm = (props) => {
       complete: false,
       tag: enteredTag
     };
-
-    console.log(ToDoData);
 
     props.onSaveToDoData(ToDoData);
     setEnteredTitle("");
