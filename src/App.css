@@ -37,11 +37,18 @@
 }
 
 .left-bar {
+  display: flex;
+  justify-content: flex-start;
+  flex-basis: 0;
+  flex-grow: 1;
+  align-items: flex-start;
   padding: 1rem;
+  padding-left: 4rem;
   background-color: rgb(128, 128, 128, 0.1);
   margin: 2rem auto;
   height: 40rem;
-  max-width: 95%;
+  max-width: 65%;
+  width: auto;
   border-style: groove;
   border-color: white;
 }
@@ -70,6 +77,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

@@ -38,7 +38,7 @@ const SideBar = (props) => {
   };
 
   return (
-    <div>
+    <div className="sideBar_inner">
       {timeOn === false && (
         <button className="button__arrow" onClick={collapseTime}>
           {<IoIosArrowForward />}
